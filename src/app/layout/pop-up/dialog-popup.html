@@ -1,0 +1,144 @@
+
+<div>
+        <mat-toolbar color="primary">Create Interview
+                <span class="spacer">
+                        <i class="fa fa-close customer-cursor" (click)="cancel()"></i>  
+                </span> 
+        </mat-toolbar>
+</div>
+
+<div mat-dialog-content >
+ 
+<flash-messages></flash-messages> 
+
+<block-ui>
+  <form [formGroup]="createInterviewForm" (ngSubmit)="onSubmit(createInterviewForm)" >
+<br>
+<div class="row">
+
+    <div class="col-md-5">
+
+            <mat-form-field appearance="outline" class="interview-fields-width">
+                <mat-label>Candidate ID</mat-label>
+                <input matInput placeholder="" formControlName="candidateId" required>
+                <mat-error *ngFor="let validation of formValidationMessages.candidateId">
+                    <mat-error class="error-message" *ngIf="createInterviewForm.get('candidateId').hasError(validation.type) && (createInterviewForm.get('candidateId').dirty || createInterviewForm.get('candidateId').touched)">
+                        {{validation.message}}</mat-error>
+                </mat-error>
+                
+            </mat-form-field>
+
+        
+            <div class="col-md-12"></div> 
+
+            <mat-form-field appearance="outline" class="interview-fields-width">
+                <mat-label>Panelist 1 (Email ID)</mat-label>
+                <input matInput placeholder="" formControlName="firstPanelistEmailId" type="email" required>
+                <mat-error *ngFor="let validation of formValidationMessages.firstPanelistEmailId">
+                        <mat-error class="error-message" *ngIf="createInterviewForm.get('firstPanelistEmailId').hasError(validation.type) && (createInterviewForm.get('firstPanelistEmailId').dirty || createInterviewForm.get('firstPanelistEmailId').touched)">
+                            {{validation.message}}</mat-error>
+                </mat-error>
+            </mat-form-field>
+
+            <div class="col-md-12"></div>    
+            
+
+            <mat-form-field appearance="outline" class="interview-fields-width">
+                <mat-label>Panelist 2 (Email ID)</mat-label>
+                <input matInput placeholder="" formControlName="secondPanelistEmailId" required>
+                <mat-error *ngFor="let validation of formValidationMessages.secondPanelistEmailId">
+                        <mat-error class="error-message" *ngIf="createInterviewForm.get('secondPanelistEmailId').hasError(validation.type) && (createInterviewForm.get('secondPanelistEmailId').dirty || createInterviewForm.get('secondPanelistEmailId').touched)">
+                            {{validation.message}}</mat-error>
+                </mat-error>
+            </mat-form-field>
+
+            <div class="col-md-12"></div>
+        
+
+            <mat-form-field appearance="outline" class="interview-fields-width">
+                <mat-label>Scheduled Date</mat-label>
+                <input matInput [matDatepicker]="pickerScheduledDate" formControlName="scheduledDate" required>
+                <mat-datepicker-toggle matSuffix [for]="pickerScheduledDate">
+                </mat-datepicker-toggle>
+                <mat-datepicker #pickerScheduledDate>
+                </mat-datepicker>
+                <mat-error *ngFor="let validation of formValidationMessages.scheduledDate">
+                        <mat-error class="error-message" *ngIf="createInterviewForm.get('scheduledDate').hasError(validation.type) && (createInterviewForm.get('scheduledDate').dirty || createInterviewForm.get('scheduledDate').touched)">
+                            {{validation.message}}</mat-error>
+                </mat-error>
+            </mat-form-field>
+
+            <div class="col-md-12"></div>
+            
+            <mat-form-field appearance="outline" class="interview-fields-width">
+                <mat-label>Time and Time Zone</mat-label>
+                <input matInput placeholder=""  formControlName="time" required>
+                <mat-error *ngFor="let validation of formValidationMessages.time">
+                        <mat-error class="error-message" *ngIf="createInterviewForm.get('time').hasError(validation.type) && (createInterviewForm.get('time').dirty || createInterviewForm.get('time').touched)">
+                            {{validation.message}}</mat-error>
+                </mat-error>
+            </mat-form-field>
+
+    </div>
+
+    <div class="col-md-2"></div>
+
+    <div class="col-md-5">
+  
+            <mat-form-field appearance="outline" class="interview-fields-width">
+                <mat-label>Location</mat-label>
+                <input matInput placeholder="" formControlName="location" required>
+                <mat-error *ngFor="let validation of formValidationMessages.location">
+                        <mat-error class="error-message" *ngIf="createInterviewForm.get('location').hasError(validation.type) && (createInterviewForm.get('location').dirty || createInterviewForm.get('location').touched)">
+                            {{validation.message}}</mat-error>
+                </mat-error>
+            </mat-form-field>
+
+            <div class="col-md-12"></div>
+            
+            <mat-form-field appearance="outline" class="interview-fields-width">
+                <mat-label>Mode of Conduct</mat-label>
+                <input matInput placeholder="" formControlName="mode" required>
+                <mat-error *ngFor="let validation of formValidationMessages.mode">
+                        <mat-error class="error-message" *ngIf="createInterviewForm.get('mode').hasError(validation.type) && (createInterviewForm.get('mode').dirty || createInterviewForm.get('mode').touched)">
+                            {{validation.message}}</mat-error>
+                </mat-error>
+            </mat-form-field>
+
+            <div class="col-md-12"></div>
+
+            <mat-form-field appearance="outline" class="interview-fields-width">
+                    <mat-label>Start time</mat-label>
+                    <input matInput type="time" theme="dark" formControlName="startTime" atp-time-picker value="startTime" required/>
+                    
+                    <mat-error *ngFor="let validation of formValidationMessages.startTime">
+                            <mat-error class="error-message" *ngIf="createInterviewForm.get('startTime').hasError(validation.type) && (createInterviewForm.get('startTime').dirty || createInterviewForm.get('startTime').touched)">
+                                {{validation.message}}</mat-error>
+                    </mat-error>
+            </mat-form-field>
+
+            <div class="col-md-12"></div>
+
+            <mat-form-field appearance="outline" class="interview-fields-width">
+                    <mat-label>End time</mat-label>
+                    <input matInput type="time" theme="dark" formControlName="endTime" atp-time-picker value="endTime" required/>
+                    <mat-error *ngFor="let validation of formValidationMessages.endTime">
+                            <mat-error class="error-message" *ngIf="createInterviewForm.get('endTime').hasError(validation.type) && (createInterviewForm.get('endTime').dirty || createInterviewForm.get('endTime').touched)">
+                                {{validation.message}}</mat-error>
+                    </mat-error>
+            </mat-form-field>
+
+    </div>
+
+</div>
+
+    <div mat-dialog-actions>
+            <button mat-button color="primary" mat-raised-button (click)="cancel()">Cancel</button>
+            <button mat-button color="primary" mat-raised-button [disabled]="!createInterviewForm.valid" type="submit">Schedule</button>
+    </div>
+
+ </form> 
+
+</block-ui>
+
+</div>

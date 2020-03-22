@@ -1,0 +1,339 @@
+<div [@routerTransition]>
+    <!-- <h2 class="text-muted"> <small>List Of Candidates</small></h2> -->
+  <app-page-header [heading]="'Create Candidate'" [icon]="'fa-plus'"></app-page-header>
+    <flash-messages></flash-messages> 
+    
+    <block-ui> 
+    <form  [formGroup]="createCandidateForm" (ngSubmit)="createCandidateFunction(createCandidateForm.value)">
+    <div class="row">
+
+      <div class="col-md-5">
+
+          <div class="form-group" class="col-md-12">
+                <mat-form-field appearance="outline" class="candidate-fields-width">
+                    <mat-label>Candidate ID</mat-label>
+                    <input matInput placeholder="" formControlName="candidateId" required>
+                    <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+                    <!-- <mat-hint>Hint</mat-hint> -->
+                    <mat-error *ngFor="let validation of formValidationMessages.candidateId">
+                        <mat-error class="error-message" *ngIf="createCandidateForm.get('candidateId').hasError(validation.type) && (createCandidateForm.get('candidateId').dirty || createCandidateForm.get('candidateId').touched)">
+                            {{validation.message}}</mat-error>
+                    </mat-error>    
+                </mat-form-field>
+          </div>
+          
+          <div class="col-md1-12"></div>
+          
+          <div class="form-group" class="col-md-12">
+              <mat-form-field appearance="outline" class="candidate-fields-width">
+                  <mat-label>Candidate Name</mat-label>
+                  <input matInput placeholder="" formControlName="candidateName" required>
+                  <mat-error *ngFor="let validation of formValidationMessages.candidateName">
+                      <mat-error class="error-message" *ngIf="createCandidateForm.get('candidateName').hasError(validation.type) && (createCandidateForm.get('candidateName').dirty || createCandidateForm.get('candidateName').touched)">
+                          {{validation.message}}</mat-error>
+                  </mat-error>    
+              </mat-form-field>
+          </div>
+          
+          <div class="col-md1-12"></div>
+      
+          <div class="form-group" class="col-md-12">
+             <mat-form-field appearance="outline" class="candidate-fields-width">
+                  <mat-label>Practice</mat-label>
+                  <input matInput placeholder="" formControlName="practice" required>
+                  <mat-error *ngFor="let validation of formValidationMessages.practice">
+                      <mat-error class="error-message" *ngIf="createCandidateForm.get('practice').hasError(validation.type) && (createCandidateForm.get('practice').dirty || createCandidateForm.get('practice').touched)">
+                          {{validation.message}}</mat-error>
+                  </mat-error>    
+              </mat-form-field>
+          </div>
+
+          <div class="col-md1-12"></div>
+      
+          <div class="form-group" class="col-md-12">
+              <mat-form-field appearance="outline" class="candidate-fields-width">
+                  <mat-label>Customer AC</mat-label>
+                  <input matInput placeholder="" formControlName="customerAC" required>
+                  <mat-error *ngFor="let validation of formValidationMessages.customerAC">
+                      <mat-error class="error-message" *ngIf="createCandidateForm.get('customerAC').hasError(validation.type) && (createCandidateForm.get('customerAC').dirty || createCandidateForm.get('customerAC').touched)">
+                          {{validation.message}}</mat-error>
+                  </mat-error>    
+              </mat-form-field>
+          </div>
+      
+          <div class="col-md1-12"></div>
+      
+          <div class="form-group" class="col-md-12">
+              <mat-form-field appearance="outline" class="candidate-fields-width">
+                  <mat-label>Quarter</mat-label>
+                  <input matInput placeholder="" formControlName="quarter" required>
+                  <mat-error *ngFor="let validation of formValidationMessages.quarter">
+                      <mat-error class="error-message" *ngIf="createCandidateForm.get('quarter').hasError(validation.type) && (createCandidateForm.get('quarter').dirty || createCandidateForm.get('quarter').touched)">
+                          {{validation.message}}</mat-error>
+                  </mat-error>    
+              </mat-form-field>
+          </div>
+      
+          <div class="col-md1-12"></div>
+      
+          <div class="form-group" class="col-md-12">
+              <mat-form-field appearance="outline" class="candidate-fields-width">
+                  <mat-label>Recieved Date</mat-label>
+                  <input matInput [matDatepicker]="pickerRecievedDate" formControlName="recievedDate" (dateChange)="recievedDateEvent('change', createCandidateForm)" required>
+                 <mat-datepicker-toggle matSuffix [for]="pickerRecievedDate"></mat-datepicker-toggle>
+                 <mat-datepicker #pickerRecievedDate></mat-datepicker>
+                  <mat-error *ngFor="let validation of formValidationMessages.recievedDate">
+                          <mat-error class="error-message" *ngIf="createCandidateForm.get('recievedDate').hasError(validation.type) && (createCandidateForm.get('recievedDate').dirty || createCandidateForm.get('recievedDate').touched)">
+                              {{validation.message}}</mat-error>
+                  </mat-error>
+              </mat-form-field>
+          </div>
+      
+          <div class="col-md1-12"></div>
+      
+          <div class="form-group" class="col-md-12">
+              <mat-form-field appearance="outline" class="candidate-fields-width"> 
+                  <mat-label>Notes</mat-label>
+                  <input matInput placeholder="" formControlName="notes" required>
+                  <mat-error *ngFor="let validation of formValidationMessages.notes">
+                      <mat-error class="error-message" *ngIf="createCandidateForm.get('notes').hasError(validation.type) && (createCandidateForm.get('notes').dirty || createCandidateForm.get('notes').touched)">
+                          {{validation.message}}</mat-error>
+                  </mat-error>    
+              </mat-form-field>
+          </div>
+      
+          <div class="col-md1-12"></div>
+      
+          <div class="form-group" class="col-md-12">
+              <mat-form-field appearance="outline" class="candidate-fields-width">
+                  <mat-label>Offer PU</mat-label>
+                  <input matInput placeholder="" formControlName="offerPU" required>
+                  <mat-error *ngFor="let validation of formValidationMessages.offerPU">
+                      <mat-error class="error-message" *ngIf="createCandidateForm.get('offerPU').hasError(validation.type) && (createCandidateForm.get('offerPU').dirty || createCandidateForm.get('offerPU').touched)">
+                          {{validation.message}}</mat-error>
+                  </mat-error>    
+              </mat-form-field>
+          </div>
+      
+          <div class="col-md1-12"></div>
+      
+          <div class="form-group" class="col-md-12">
+              <mat-form-field appearance="outline" class="candidate-fields-width">
+                  <mat-label>Demand ID</mat-label>
+                  <input matInput placeholder="" formControlName="demandId" required>
+                  <mat-error *ngFor="let validation of formValidationMessages.demandId">
+                      <mat-error class="error-message" *ngIf="createCandidateForm.get('demandId').hasError(validation.type) && (createCandidateForm.get('demandId').dirty || createCandidateForm.get('demandId').touched)">
+                          {{validation.message}}</mat-error>
+                  </mat-error>    
+              </mat-form-field>
+          </div>
+      
+          <div class="col-md1-12"></div>
+      
+          <div class="form-group" class="col-md-12">
+              <mat-form-field appearance="outline" class="candidate-fields-width">
+                  <mat-label>Location</mat-label>
+                  <input matInput placeholder="" formControlName="location" required>
+                  <mat-error *ngFor="let validation of formValidationMessages.location">
+                      <mat-error class="error-message" *ngIf="createCandidateForm.get('location').hasError(validation.type) && (createCandidateForm.get('location').dirty || createCandidateForm.get('location').touched)">
+                          {{validation.message}}</mat-error>
+                  </mat-error>    
+              </mat-form-field>
+          </div>
+      
+          <div class="col-md1-12"></div>
+      
+          <div class="form-group" class="col-md-12">
+              <mat-form-field appearance="outline" class="candidate-fields-width">
+                  <mat-label>DOJ</mat-label>
+                  <input matInput placeholder="" formControlName="doj" required>
+                  <mat-error *ngFor="let validation of formValidationMessages.doj">
+                      <mat-error class="error-message" *ngIf="createCandidateForm.get('doj').hasError(validation.type) && (createCandidateForm.get('doj').dirty || createCandidateForm.get('doj').touched)">
+                          {{validation.message}}</mat-error>
+                  </mat-error>    
+              </mat-form-field>
+          </div>
+      
+          <div class="col-md1-12"></div>
+      
+      </div>
+        
+      <div class="col-md-2"></div>
+      
+      <div class="col-md-5">
+
+          <div class="form-group" class="col-md-12">
+                <mat-form-field appearance="outline" class="candidate-fields-width">
+                    <mat-label>Candidate Contact</mat-label>
+                    <input matInput placeholder="" formControlName="candidateContact" required>
+                    <mat-error *ngFor="let validation of formValidationMessages.candidateContact">
+                        <mat-error class="error-message" *ngIf="createCandidateForm.get('candidateContact').hasError(validation.type) && (createCandidateForm.get('candidateContact').dirty || createCandidateForm.get('candidateContact').touched)">
+                            {{validation.message}}</mat-error>
+                    </mat-error>    
+                </mat-form-field>
+          </div>
+
+          <div class="col-md1-12"></div>
+          
+          <div class="form-group" class="col-md-12">
+            <mat-form-field appearance="outline" class="candidate-fields-width">
+              <mat-select formControlName="status" required placeholder="Select">
+                        <mat-option>Select</mat-option>
+                        <mat-option *ngFor="let status of currentStatusDropDown" [value]="status">
+                          {{status.currentStatus}}
+                        </mat-option>
+              </mat-select>
+              <mat-error *ngFor="let validation of formValidationMessages.status">
+                  <mat-error class="error-message" *ngIf="createCandidateForm.get('status').hasError(validation.type) && (createCandidateForm.get('status').dirty || createCandidateForm.get('status').touched)">
+                      {{validation.message}}
+                  </mat-error>
+              </mat-error>   
+            </mat-form-field>
+          </div>
+          
+          <div class="col-md1-12"></div>
+      
+          <div class="form-group" class="col-md-12">
+              <mat-form-field appearance="outline" class="candidate-fields-width">
+                  <mat-label>First Stage Panelist</mat-label>
+                  <input matInput placeholder="" formControlName="firstPanelistEmailId" required>
+                  <mat-error *ngFor="let validation of formValidationMessages.firstPanelistEmailId">
+                      <mat-error class="error-message" *ngIf="createCandidateForm.get('firstPanelistEmailId').hasError(validation.type) && (createCandidateForm.get('firstPanelistEmailId').dirty || createCandidateForm.get('firstPanelistEmailId').touched)">
+                          {{validation.message}}</mat-error>
+                  </mat-error>    
+              </mat-form-field>
+          </div>
+
+          <div class="col-md1-12"></div>
+      
+          <!-- <div class="form-group" class="col-md-12">
+              <mat-form-field appearance="outline" class="candidate-fields-width">
+                  <mat-label>Second Stage Panelist</mat-label>
+                  <input matInput placeholder="" formControlName="secondPanelistEmailId" required>
+                  <mat-error *ngFor="let validation of formValidationMessages.secondPanelistEmailId">
+                      <mat-error class="error-message" *ngIf="createCandidateForm.get('secondPanelistEmailId').hasError(validation.type) && (createCandidateForm.get('secondPanelistEmailId').dirty || createCandidateForm.get('secondPanelistEmailId').touched)">
+                          {{validation.message}}</mat-error>
+                  </mat-error>    
+              </mat-form-field>
+          </div> -->
+          <div class="form-group" class="col-md-12">
+                <mat-form-field appearance="outline" class="candidate-fields-width">
+                    <mat-label>Candidate Email ID</mat-label>
+                    <input matInput placeholder="" formControlName="candidateEmail" required>
+                    <mat-error *ngFor="let validation of formValidationMessages.candidateEmail">
+                        <mat-error class="error-message" *ngIf="createCandidateForm.get('candidateEmail').hasError(validation.type) && (createCandidateForm.get('candidateEmail').dirty || createCandidateForm.get('candidateEmail').touched)">
+                            {{validation.message}}</mat-error>
+                    </mat-error>    
+                </mat-form-field>
+          </div>
+      
+          <div class="col-md1-12"></div>
+      
+          <div class="form-group" class="col-md-12">
+              <mat-form-field appearance="outline" class="candidate-fields-width">
+                  <mat-label>Remark</mat-label>
+                  <input matInput placeholder="" formControlName="remark" required>
+                  <mat-error *ngFor="let validation of formValidationMessages.remark">
+                      <mat-error class="error-message" *ngIf="createCandidateForm.get('remark').hasError(validation.type) && (createCandidateForm.get('remark').dirty || createCandidateForm.get('remark').touched)">
+                          {{validation.message}}</mat-error>
+                  </mat-error>    
+              </mat-form-field>
+          </div>
+      
+          <div class="col-md1-12"></div>
+
+
+          <div class="form-group" class="col-md-12">
+                <mat-form-field appearance="outline" class="candidate-fields-width">
+                    <mat-label>Week Ending Date</mat-label>
+                    <input matInput [matDatepicker]="pickerWeekEndingDate" formControlName="weekEndingDate" disabled required>
+                   <mat-datepicker-toggle matSuffix [for]="pickerWeekEndingDate"></mat-datepicker-toggle>
+                   <mat-datepicker #pickerWeekEndingDate></mat-datepicker>
+                    <mat-error *ngFor="let validation of formValidationMessages.weekEndingDate">
+                            <mat-error class="error-message" *ngIf="createCandidateForm.get('weekEndingDate').hasError(validation.type) && (createCandidateForm.get('weekEndingDate').dirty || createCandidateForm.get('weekEndingDate').touched)">
+                                {{validation.message}}</mat-error>
+                    </mat-error>
+                </mat-form-field>
+          </div>
+        
+          <div class="col-md1-12"></div>
+      
+          <div class="form-group" class="col-md-12">
+              <mat-form-field appearance="outline" class="candidate-fields-width">
+                  <mat-label>Background</mat-label>
+                  <input matInput placeholder="" formControlName="background" required>
+                  <mat-error *ngFor="let validation of formValidationMessages.background">
+                      <mat-error class="error-message" *ngIf="createCandidateForm.get('background').hasError(validation.type) && (createCandidateForm.get('background').dirty || createCandidateForm.get('background').touched)">
+                          {{validation.message}}</mat-error>
+                  </mat-error>    
+              </mat-form-field>
+          </div>
+      
+          <div class="col-md1-12"></div>
+      
+      
+          <div class="form-group" class="col-md-12">
+              <mat-form-field appearance="outline" class="candidate-fields-width">
+                  <mat-label>Recieved Month</mat-label>
+                  <input matInput placeholder="" formControlName="recievedMonth" required>
+                  <mat-error *ngFor="let validation of formValidationMessages.recievedMonth">
+                      <mat-error class="error-message" *ngIf="createCandidateForm.get('recievedMonth').hasError(validation.type) && (createCandidateForm.get('recievedMonth').dirty || createCandidateForm.get('recievedMonth').touched)">
+                          {{validation.message}}</mat-error>
+                  </mat-error>    
+              </mat-form-field>
+          </div>
+      
+          <div class="col-md1-12"></div>
+      
+          <div class="form-group" class="col-md-12">
+              <mat-form-field appearance="outline" class="candidate-fields-width">
+                  <mat-label>Parent Skill Set</mat-label>
+                  <input matInput placeholder="" formControlName="parentSkillSet" required>
+                  <mat-error *ngFor="let validation of formValidationMessages.parentSkillSet">
+                      <mat-error class="error-message" *ngIf="createCandidateForm.get('parentSkillSet').hasError(validation.type) && (createCandidateForm.get('parentSkillSet').dirty || createCandidateForm.get('parentSkillSet').touched)">
+                          {{validation.message}}</mat-error>
+                  </mat-error>    
+              </mat-form-field>
+          </div>
+      
+          <div class="col-md1-12"></div>
+      
+          <div class="form-group" class="col-md-12">
+              <mat-form-field appearance="outline" class="candidate-fields-width">
+                  <mat-label>Responsible</mat-label>
+                  <input matInput placeholder="" formControlName="responsible" required>
+                  <mat-error *ngFor="let validation of formValidationMessages.responsible">
+                      <mat-error class="error-message" *ngIf="createCandidateForm.get('responsible').hasError(validation.type) && (createCandidateForm.get('responsible').dirty || createCandidateForm.get('responsible').touched)">
+                          {{validation.message}}</mat-error>
+                  </mat-error>    
+              </mat-form-field>
+          </div>
+      
+          <div class="col-md1-12"></div>
+      
+          <div class="form-group" class="col-md-12">
+              <mat-form-field appearance="outline" class="candidate-fields-width">
+                  <mat-label>Profile Age</mat-label>
+                  <input matInput placeholder="" formControlName="profileAge" required>
+                  <mat-error *ngFor="let validation of formValidationMessages.profileAge">
+                      <mat-error class="error-message" *ngIf="createCandidateForm.get('profileAge').hasError(validation.type) && (createCandidateForm.get('profileAge').dirty || createCandidateForm.get('profileAge').touched)">
+                          {{validation.message}}</mat-error>
+                  </mat-error>    
+              </mat-form-field>
+          </div>
+      
+          <div class="col-md1-12"></div>
+     </div>
+
+    </div>
+    
+    <div class="row col-md-5">
+        <div class="col-md-12">
+                <button mat-button mat-raised-button color="primary" type="submit">Create Candidate</button> 
+        </div>
+    </div>
+    
+    <!-- [disabled]="!createCandidateForm.valid" -->
+    </form>
+    </block-ui>
+</div>
