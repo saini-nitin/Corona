@@ -4,7 +4,8 @@ import { Router } from '@angular/router';
 import { CandidateService } from '../services/candidate.service';
 import {HttpClient} from '@angular/common/http';
 import { CandidateView } from './view/candidate-view';
-
+import { InfoObject } from './InfoObject';
+import { INFO } from './instructions';
 import {AfterViewInit, ViewChild} from '@angular/core';
 import {MatPaginator, MatSort, MatTableDataSource, MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import { StorageService } from '../services/storage.service';
@@ -21,6 +22,7 @@ import { Subject } from 'rxjs/Subject';
   animations: [routerTransition()]
 })
 export class CandidateComponent implements AfterViewInit,OnDestroy {
+  infos = INFO;
   @BlockUI() blockUI: NgBlockUI;  
   displayedColumns = ['candidateId', 'candidateName', 'candidateContact', 'status'];
   dataSource = new MatTableDataSource();

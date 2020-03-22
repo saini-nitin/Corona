@@ -4,14 +4,28 @@
     
   <flash-messages></flash-messages>
 
-    <div class="mat-elevation-z8">     
+    <!-- <div class="mat-elevation-z8">      -->
+      <h3>WHO WhatsApp link</h3> 
+      
+      <li><a href="https://api.whatsapp.com/send?phone=41798931892&text=hi&source=&data=" target="_blank">Open This on WhstsApp And Say Hi to WHO Directly</a></li>
+      
+      <br>
+      
       <h3>WHO Recommended links</h3> 
       <ul>
-        <li><a href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public/myth-busters">Myth Busters</a></li>
-        <li><a href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public">Advice For Public</a></li>
+        <li><a href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public/myth-busters" target="_blank">Myth Busters</a></li>
+        <li><a href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public" target="_blank">Advice For Public</a></li>
       </ul>
-        
-    </div>
+    
+      <h3>FACTS</h3> 
+
+      <ul class="infos">
+          <li *ngFor="let info of infos"
+            [class.selected]="info === selectedHero">
+            <span class="badge">{{info.id}}</span> {{info.name}}
+          </li>
+        </ul>
+    <!-- </div> -->
   
 </div>
   
